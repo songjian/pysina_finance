@@ -1,7 +1,7 @@
 # pysina_finance
 获取新浪财经网站数据的Python包。
 
-## 示例1: 获得历史的每股净资产
+## 示例1: 获得历史每股净资产
 
 ```python
 # example1.py

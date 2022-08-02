@@ -49,7 +49,7 @@ def zcfzb(code, year='part'):
 
 def cwzy(code):
     """财务摘要
-    写这个方法主要是为了拿到每股净资产，写到一般发现有更好的方法或者这个数据。新的方法是 mgjzc
+    写这个方法主要是为了拿到每股净资产，写到一半发现有更好的方法获得这个数据。这个方法暂时保留，新的方法名: mgjzc()
     """
     url='https://vip.stock.finance.sina.com.cn/corp/go.php/vFD_FinanceSummary/stockid/'+code+'.phtml'
     r=requests.get(url)
