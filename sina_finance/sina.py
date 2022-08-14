@@ -68,4 +68,7 @@ def mgjzc(code):
         td = tr.find_all('td')
         csv_buffer.write(td[0].get_text()+','+td[1].get_text()+"\n")
     csv_buffer.seek(0)
-    return pd.read_csv(csv_buffer, index_col=0, parse_dates=['日期'])
+    df = pd.read_csv(csv_buffer, index_col=0, parse_dates=['日期'])
+    if df['每股净资产'].dtype != 'float':
+        df['每股净资产']=df['每股净资产'].str.strip().replace({''}, 0).astype('float')
+    return df
