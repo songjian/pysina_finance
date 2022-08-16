@@ -1,10 +1,11 @@
 # pysina_finance
 获取新浪财经网站数据的Python包。
 
-## 示例1: 获得历史每股净资产
+## 使用
+
+### 获得历史每股净资产
 
 ```python
-# example1.py
 from sina_finance import sina
 code='600519'
 r=sina.mgjzc(code)
@@ -29,3 +30,36 @@ python example1.py
 
 [86 rows x 1 columns]
 ```
+
+### 获得每股收益
+
+```python
+from sina_finance import sina
+code='600519'
+r=sina.mgsy(code)
+print(r)
+```
+
+```sh
+             每股收益
+日期               
+2022-06-30  23.72
+2022-03-31  13.73
+2021-12-31  41.76
+2021-09-30  29.67
+2021-06-30  19.63
+...           ...
+2001-12-31   0.00
+2001-06-30   0.00
+2000-12-31   0.00
+1999-12-31   0.00
+1998-12-31   0.00
+
+[87 rows x 1 columns]
+```
+
+## CHANGELOG
+
+### 2022年8月16日
+
+* 添加获取每股收益的方法。

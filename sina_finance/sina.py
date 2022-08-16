@@ -72,3 +72,20 @@ def mgjzc(code):
     if df['每股净资产'].dtype != 'float':
         df['每股净资产']=df['每股净资产'].str.strip().replace({''}, 0).astype('float')
     return df
+
+def mgsy(code):
+    """每股收益
+    """
+    url='https://vip.stock.finance.sina.com.cn/corp/view/vFD_FinanceSummaryHistory.php?stockid='+code+'&type=mgsy'
+    r=requests.get(url)
+    soup=BeautifulSoup(r.text, 'html.parser')
+    csv_buffer=io.StringIO()
+    csv_buffer.write("日期,每股收益\n")
+    for tr in soup.find('table', id='Table1').tbody.find_all('tr'):
+        td = tr.find_all('td')
+        csv_buffer.write(td[0].get_text()+','+td[1].get_text()+"\n")
+    csv_buffer.seek(0)
+    df = pd.read_csv(csv_buffer, index_col=0, parse_dates=['日期'])
+    if df['每股收益'].dtype != 'float':
+        df['每股收益']=df['每股收益'].str.strip().replace({''}, 0).astype('float')
+    return df
